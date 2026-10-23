@@ -1,4 +1,4 @@
-# Políticos Portugal
+# Políticos de Portugal
 
 Quem nos representa em Portugal, com dados oficiais e abertos, em linguagem simples.
 Sem ranking, nota ou recomendação de voto.
