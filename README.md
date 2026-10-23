@@ -25,7 +25,12 @@ npm run dev       # site em http://localhost:3000
   Avisos não fatais ficam em `data/gerado/relatorio.json`.
 - `data/gerado/` está no repositório, para que a publicação não dependa de o site da AR estar no ar.
   Uma GitHub Action atualiza-o todos os dias.
-- O site é Next.js, totalmente estático, com `noindex` enquanto estiver em testes.
+- `scripts/fotos.mjs` guarda as fotografias oficiais em versão leve em `public/fotos/`.
+- O site é Next.js, estático, com `noindex` enquanto estiver em testes.
+- Estatísticas de visitas (página **Ao vivo**): Supabase, projeto `politicos-app`, tabela `eventos`,
+  acedida só pelas funções `registar_evento` e `estatisticas`. Sem cookies nem IP; o código diário de visitante
+  usa o segredo `SEGREDO_VISITAS` (variável de ambiente na Vercel). Registos apagados ao fim de 90 dias.
+  Limitação conhecida: como qualquer contador público, pode ser inflacionado por quem chame a função diretamente.
 
 Atrás de um proxy (como no ambiente de desenvolvimento do Claude), corre a recolha com `NODE_USE_ENV_PROXY=1`.
 
