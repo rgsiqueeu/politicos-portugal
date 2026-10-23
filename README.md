@@ -8,7 +8,26 @@ Inspirado no [Politicômetro](https://www.politicometro.org/) (Brasil). Ver
 
 ## Estado
 
-Fase 0 — levantamento concluído (ver `docs/fontes-ar.md`). Ainda sem código.
+MVP: os deputados da XVII Legislatura, com perfil, presenças no plenário, iniciativas, intervenções,
+perguntas e requerimentos, e votações em que votaram diferente da bancada.
+
+## Como funciona
+
+```bash
+npm install
+npm run dados     # recolhe os dados abertos da AR (data/raw/) e gera data/gerado/
+npm run dev       # site em http://localhost:3000
+```
+
+- `scripts/recolha.mjs` descobre os links de download nas páginas de dados abertos da AR (mudam a cada visita)
+  e só grava respostas que sejam JSON válido.
+- `scripts/processar.mjs` gera `data/gerado/` e pára se uma presença não ligar a um único deputado.
+  Avisos não fatais ficam em `data/gerado/relatorio.json`.
+- `data/gerado/` está no repositório, para que a publicação não dependa de o site da AR estar no ar.
+  Uma GitHub Action atualiza-o todos os dias.
+- O site é Next.js, totalmente estático, com `noindex` enquanto estiver em testes.
+
+Atrás de um proxy (como no ambiente de desenvolvimento do Claude), corre a recolha com `NODE_USE_ENV_PROXY=1`.
 
 ## Documentos
 

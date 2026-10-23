@@ -1,0 +1,180 @@
+{
+  "legislatura": "XVII",
+  "inicioLegislatura": "2025-06-03",
+  "geradoEm": "2026-10-23T10:05:31.965Z",
+  "recolhidoEm": "2026-10-23T09:25:47.364Z",
+  "fontes": {
+    "informacaoBase": {
+      "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
+      "ficheiro": "InformacaoBaseXVII_json.txt",
+      "bytes": 565693,
+      "recolhidoEm": "2026-10-23T09:28:07.422Z"
+    },
+    "registoBiografico": {
+      "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
+      "ficheiro": "RegistoBiograficoXVII_json.txt",
+      "bytes": 746179,
+      "recolhidoEm": "2026-10-23T09:30:14.609Z"
+    },
+    "atividadeDeputado": {
+      "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
+      "ficheiro": "AtividadeDeputadoXVII_json.txt",
+      "bytes": 40611963,
+      "recolhidoEm": "2026-10-23T09:37:21.175Z"
+    },
+    "orgaos": {
+      "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
+      "ficheiro": "OrgaoComposicaoXVII_json.txt",
+      "bytes": 5216238,
+      "recolhidoEm": "2026-10-23T09:37:41.370Z"
+    },
+    "iniciativas": {
+      "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
+      "ficheiro": "IniciativasXVII_json.txt",
+      "bytes": 100185573,
+      "recolhidoEm": "2026-10-23T09:39:19.312Z"
+    }
+  },
+  "grupos": [
+    {
+      "sigla": "PSD",
+      "nome": "Partido Social Democrata"
+    },
+    {
+      "sigla": "CH",
+      "nome": "Chega"
+    },
+    {
+      "sigla": "PS",
+      "nome": "Partido Socialista"
+    },
+    {
+      "sigla": "IL",
+      "nome": "Iniciativa Liberal"
+    },
+    {
+      "sigla": "L",
+      "nome": "Livre"
+    },
+    {
+      "sigla": "PCP",
+      "nome": "Partido Comunista Português"
+    },
+    {
+      "sigla": "CDS-PP",
+      "nome": "Centro Democrático Social - Partido Popular"
+    },
+    {
+      "sigla": "BE",
+      "nome": "Bloco De Esquerda"
+    },
+    {
+      "sigla": "PAN",
+      "nome": "Pessoas-Animais-Natureza"
+    },
+    {
+      "sigla": "JPP",
+      "nome": "Juntos Pelo Povo"
+    }
+  ],
+  "circulos": [
+    {
+      "id": "19",
+      "nome": "Açores"
+    },
+    {
+      "id": "1",
+      "nome": "Aveiro"
+    },
+    {
+      "id": "2",
+      "nome": "Beja"
+    },
+    {
+      "id": "3",
+      "nome": "Braga"
+    },
+    {
+      "id": "4",
+      "nome": "Bragança"
+    },
+    {
+      "id": "5",
+      "nome": "Castelo Branco"
+    },
+    {
+      "id": "6",
+      "nome": "Coimbra"
+    },
+    {
+      "id": "21",
+      "nome": "Europa"
+    },
+    {
+      "id": "7",
+      "nome": "Évora"
+    },
+    {
+      "id": "8",
+      "nome": "Faro"
+    },
+    {
+      "id": "22",
+      "nome": "Fora da Europa"
+    },
+    {
+      "id": "9",
+      "nome": "Guarda"
+    },
+    {
+      "id": "10",
+      "nome": "Leiria"
+    },
+    {
+      "id": "11",
+      "nome": "Lisboa"
+    },
+    {
+      "id": "20",
+      "nome": "Madeira"
+    },
+    {
+      "id": "12",
+      "nome": "Portalegre"
+    },
+    {
+      "id": "13",
+      "nome": "Porto"
+    },
+    {
+      "id": "14",
+      "nome": "Santarém"
+    },
+    {
+      "id": "15",
+      "nome": "Setúbal"
+    },
+    {
+      "id": "16",
+      "nome": "Viana do Castelo"
+    },
+    {
+      "id": "17",
+      "nome": "Vila Real"
+    },
+    {
+      "id": "18",
+      "nome": "Viseu"
+    }
+  ],
+  "contagens": {
+    "deputadosNaLegislatura": 270,
+    "emFuncoes": 230,
+    "reunioesPlenario": 125,
+    "registosPresenca": 28750,
+    "iniciativas": 2164,
+    "votacoesPlenario": 2178,
+    "nomesEmVotacoes": 127,
+    "desviosLigados": 127
+  }
+}
