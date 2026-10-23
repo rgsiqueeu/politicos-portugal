@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Alternar from "@/components/Alternar";
 import MapaCirculos from "@/components/MapaCirculos";
+import MapaPortugal from "@/components/MapaPortugal";
 import { circuloSlug, deputados, meta } from "@/lib/dados";
 
 export const metadata: Metadata = { title: "O meu círculo" };
@@ -18,7 +20,7 @@ export default function Circulos() {
         círculos para quem vive no estrangeiro. Escolhe o teu para ver quem foi eleito por ele.
       </p>
       <div className="mapa-e-lista">
-        <MapaCirculos contagem={contagem} />
+        <Alternar mapa={<MapaPortugal contagem={contagem} />} quadrados={<MapaCirculos contagem={contagem} />} />
         <div className="cartao">
           <ul className="lista">
             {m.circulos.map((c) => (

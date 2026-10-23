@@ -1,6 +1,8 @@
 import Link from "next/link";
 import CartaoVotacao from "@/components/CartaoVotacao";
+import Alternar from "@/components/Alternar";
 import MapaCirculos from "@/components/MapaCirculos";
+import MapaPortugal from "@/components/MapaPortugal";
 import MaisVistos from "@/components/MaisVistos";
 import Pesquisa from "@/components/Pesquisa";
 import VivoAgora from "@/components/VivoAgora";
@@ -163,7 +165,7 @@ export default function Inicio() {
             </Link>
           </div>
           <div className="mapa-e-lista">
-            <MapaCirculos contagem={contagem} />
+            <Alternar mapa={<MapaPortugal contagem={contagem} />} quadrados={<MapaCirculos contagem={contagem} />} />
             <div className="cartao">
               <h3>Como funciona a eleição</h3>
               <p>

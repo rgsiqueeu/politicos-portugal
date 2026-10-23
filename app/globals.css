@@ -152,7 +152,7 @@ main { padding-bottom: 4rem; }
 
 /* mapa em mosaico dos círculos */
 .mapa-e-lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; align-items: start; }
-@media (min-width: 820px) { .mapa-e-lista { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); } }
+@media (min-width: 820px) { .mapa-e-lista { grid-template-columns: minmax(0, 420px) minmax(0, 1fr); } }
 .mapa { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .mapa a, .mapa .vazio { aspect-ratio: 1; border-radius: 12px; }
 .mapa a { display: flex; flex-direction: column; justify-content: space-between; padding: .4rem .5rem; text-decoration: none; color: var(--tinta); background: var(--azul-claro); font-size: .72rem; line-height: 1.1; font-weight: 600; transition: transform .12s, box-shadow .12s; }
@@ -247,3 +247,25 @@ details > summary { cursor: pointer; color: var(--azul); font-weight: 600; margi
 .rodape .marca { color: #fff; display: inline-block; margin-bottom: .75rem; }
 .rodape .marca span { color: var(--amarelo); }
 .rodape nav { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin: 1rem 0; }
+
+/* mapa geográfico */
+.mapa-portugal { position: relative; max-width: 520px; }
+.mapa-portugal svg { width: 100%; height: auto; display: block; }
+.mapa-portugal .regiao { stroke: #fff; stroke-width: 1.2; stroke-linejoin: round; cursor: pointer; transition: fill .15s, filter .15s; }
+.mapa-portugal a:hover .regiao, .mapa-portugal .regiao.ativa { fill: var(--amarelo); filter: drop-shadow(0 3px 6px rgb(18 26 51 / 25%)); }
+.mapa-portugal a:focus-visible { outline: none; }
+.mapa-portugal a:focus-visible .regiao { fill: var(--amarelo); stroke: var(--tinta); stroke-width: 2; }
+.mapa-portugal .caixa-ilha { fill: var(--branco); stroke: var(--linha); cursor: pointer; transition: fill .15s; }
+.mapa-portugal a:hover .caixa-ilha, .mapa-portugal .caixa-ilha.ativa { fill: var(--amarelo-claro); stroke: var(--amarelo); }
+.mapa-portugal .regiao.ilha { stroke: var(--azul); stroke-width: 2.5; }
+.mapa-portugal .rotulo-ilha { font-size: 12px; font-weight: 700; fill: var(--tinta); pointer-events: none; }
+.mapa-portugal .numero-regiao { font-family: var(--fonte-display), sans-serif; font-weight: 800; font-size: 13px; fill: var(--tinta); pointer-events: none; }
+.mapa-portugal .numero-regiao.claro { fill: #fff; }
+.mapa-portugal a:hover .numero-regiao, .mapa-portugal .regiao.ativa + .numero-regiao { fill: var(--tinta); }
+.mapa-info { position: absolute; left: 0; top: 0; width: 36%; display: flex; flex-direction: column; gap: .15rem; font-size: .9rem; color: var(--tinta-2); }
+.mapa-info strong { font-size: clamp(1.05rem, 3.4vw, 1.5rem); color: var(--tinta); line-height: 1.1; }
+.mapa-info a { font-weight: 600; margin-top: .25rem; }
+.estrangeiro { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .75rem; font-size: .9rem; color: var(--tinta-2); }
+.alternar { display: inline-flex; background: var(--branco); border: 1px solid var(--linha); border-radius: 999px; padding: 3px; margin-bottom: 1rem; }
+.alternar button { font: inherit; font-size: .9rem; font-weight: 600; border: 0; background: none; padding: .4rem .9rem; border-radius: 999px; cursor: pointer; color: var(--tinta-2); }
+.alternar button[aria-pressed="true"] { background: var(--tinta); color: #fff; }

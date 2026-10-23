@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Fonte from "@/components/Fonte";
+import Alternar from "@/components/Alternar";
 import MapaCirculos from "@/components/MapaCirculos";
+import MapaPortugal from "@/components/MapaPortugal";
 import { circuloSlug, deputados, meta, miniatura } from "@/lib/dados";
 
 type Props = { params: Promise<{ circulo: string }> };
@@ -50,7 +52,10 @@ export default async function Circulo({ params }: Props) {
       <h1 className="display">{c.nome}</h1>
       <p>{em.length} deputados em funções eleitos por este círculo, por ordem alfabética.</p>
       <div className="mapa-e-lista">
-        <MapaCirculos contagem={contagem} atual={c.nome} />
+        <Alternar
+          mapa={<MapaPortugal contagem={contagem} atual={c.nome} />}
+          quadrados={<MapaCirculos contagem={contagem} atual={c.nome} />}
+        />
         <div>
           <ul className="pessoas">{em.map(cartao)}</ul>
           {sairam.length > 0 && (

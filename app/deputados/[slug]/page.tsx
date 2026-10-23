@@ -57,8 +57,13 @@ export default async function Cracha({ params }: Props) {
     contagem.set(rotulo, (contagem.get(rotulo) ?? 0) + 1);
   }
   const presentes = p.presencas.filter((x) => grupoPresenca(x.codigo) === "presenca").length;
-  const motivos = new Map<string, number>();
-  for (const x of p.presencas) if (x.motivo) motivos.set(x.motivo, (motivos.get(x.motivo) ?? 0) + 1);
+  // Por motivo: quantas reuniões e entre que datas (uma licença apanha várias reuniões seguidas).
+  const motivos = new Map<string, { n: number; de: string; ate: string }>();
+  for (const x of p.presencas) {
+    if (!x.motivo) continue;
+    const m = motivos.get(x.motivo);
+    motivos.set(x.motivo, m ? { n: m.n + 1, de: m.de < x.data ? m.de : x.data, ate: m.ate > x.data ? m.ate : x.data } : { n: 1, de: x.data, ate: x.data });
+  }
 
   const intervPorTipo = new Map<string, number>();
   for (const i of p.intervencoes) intervPorTipo.set(i.tipo ?? "Sem tipo", (intervPorTipo.get(i.tipo ?? "Sem tipo") ?? 0) + 1);
@@ -178,17 +183,21 @@ export default async function Cracha({ params }: Props) {
             <table>
               <thead>
                 <tr>
-                  <th>Motivo indicado na falta justificada</th>
+                  <th>Motivo da falta justificada</th>
+                  <th>Período</th>
                   <th style={{ textAlign: "right" }}>Reuniões</th>
                 </tr>
               </thead>
               <tbody>
                 {[...motivos.entries()]
-                  .sort((a, b) => b[1] - a[1])
-                  .map(([t, n]) => (
+                  .sort((a, b) => b[1].n - a[1].n)
+                  .map(([t, m]) => (
                     <tr key={t}>
                       <td>{t}</td>
-                      <td className="n">{n}</td>
+                      <td>
+                        <small>{m.de === m.ate ? data(m.de) : `${data(m.de)} a ${data(m.ate)}`}</small>
+                      </td>
+                      <td className="n">{m.n}</td>
                     </tr>
                   ))}
               </tbody>
@@ -196,6 +205,10 @@ export default async function Cracha({ params }: Props) {
           </div>
         )}
       </div>
+      <p className="nota" style={{ marginTop: ".75rem" }}>
+        Os números contam reuniões, não ausências separadas: uma licença ou uma baixa apanha várias reuniões
+        seguidas. O plenário reúne normalmente duas a três vezes por semana.
+      </p>
       <Fonte texto="presenças publicadas por reunião plenária" />
 
       <h2>Votações em que votou diferente da bancada</h2>

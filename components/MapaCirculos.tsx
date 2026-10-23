@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { circuloSlug } from "@/lib/dados";
+import { nivel } from "@/lib/niveis";
 
 // Mapa em mosaico: cada distrito é um quadrado, na posição aproximada. [linha, coluna]
 const POSICAO: Record<string, [number, number]> = {
@@ -24,7 +25,6 @@ const POSICAO: Record<string, [number, number]> = {
 };
 const FORA = ["Açores", "Madeira", "Europa", "Fora da Europa"];
 
-const nivel = (n: number) => (n <= 3 ? 1 : n <= 6 ? 2 : n <= 10 ? 3 : n <= 20 ? 4 : 5);
 
 export default function MapaCirculos({ contagem, atual }: { contagem: Record<string, number>; atual?: string }) {
   const quadrado = (nome: string, estilo?: React.CSSProperties) => {

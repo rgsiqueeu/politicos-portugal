@@ -190,7 +190,7 @@ export default function Metodologia() {
 
       <h2>Créditos</h2>
       <p>
-        Inspirado no <a href="https://www.politicometro.org/">Politicômetro</a>, um projeto brasileiro com o mesmo
+        Mapa: Natural Earth (domínio público). Inspirado no <a href="https://www.politicometro.org/">Politicômetro</a>, um projeto brasileiro com o mesmo
         princípio: só dados oficiais, em linguagem simples, sem ranking. Fotografias: Assembleia da República.
       </p>
       <p className="nota">Página gerada em {dataHora(m.geradoEm)}.</p>
