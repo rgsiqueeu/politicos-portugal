@@ -54,7 +54,7 @@ export default function MapaPortugal({ contagem, atual }: { contagem: Record<str
                 </>
               )}
               <path d={r.d} fill={COR[nivel(k)]} className={`regiao${ativo ? " ativa" : ""}${caixa ? " ilha" : ""}`} />
-              {!caixa && k >= 9 && (
+              {!caixa && (
                 <text x={r.centro[0]} y={r.centro[1] + 4} textAnchor="middle" className={`numero-regiao${nivel(k) >= 4 ? " claro" : ""}`} aria-hidden="true">
                   {k}
                 </text>
