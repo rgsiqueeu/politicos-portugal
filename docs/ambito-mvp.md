@@ -5,9 +5,9 @@ Princípio: é melhor cobrir pouco e bem do que muito e com "—" em todo o lado
 ## Entra
 
 1. **Os 230 deputados da Assembleia da República** (legislatura em curso), cada um com um perfil:
-   identificação, partido, círculo eleitoral, mandato e substituições, comissões, iniciativas de autoria,
-   intervenções em plenário, presenças (se publicadas em dados abertos), registo de interesses (se publicado),
-   votos individuais contra a bancada / declarações de voto (a confirmar nos dados).
+   identificação e dados biográficos, partido, círculo eleitoral, mandato e substituições, comissões,
+   iniciativas de autoria, intervenções em plenário, requerimentos, **presenças no plenário por reunião**
+   e **votações em que se afastou da bancada**. Tudo confirmado nos dados — ver [`fontes-ar.md`](fontes-ar.md).
 2. **Quem me representa:** escolhe o teu círculo eleitoral e vês os deputados eleitos por ele.
 3. **Presidente da República e Governo** (primeiro-ministro e ministros): quem são e desde quando.
 4. **Metodologia, fontes e lacunas**, desde o primeiro dia.
@@ -26,11 +26,7 @@ Princípio: é melhor cobrir pouco e bem do que muito e com "—" em todo o lado
 - **Votação:** na AR o voto regista-se quase sempre por grupo parlamentar. A métrica brasileira
   "votou igual ao partido em X%" seria quase sempre 100% e não informa nada. O que interessa em
   Portugal é assinalar os votos que se afastam da bancada.
-- **Despesas:** não há equivalente à cota parlamentar brasileira com cada recibo em dados abertos (a confirmar).
-- **Património:** as declarações estão na Entidade para a Transparência, consulta individual; não há
-  ficheiro aberto completo (a confirmar). Recolha em massa exige validação jurídica.
-
-## Por confirmar quando houver acesso às fontes
-
-Cada item acima marcado "a confirmar" tem de ser verificado nos dados abertos reais antes de
-entrar em qualquer ecrã.
+- **Presenças:** ao contrário do Senado brasileiro, a AR publica a presença de cada deputado em cada
+  reunião plenária, com o motivo das faltas justificadas. Confirmado.
+- **Despesas:** não há equivalente à cota parlamentar brasileira nos dados abertos da AR. Confirmado: fica "—".
+- **Património e interesses:** não estão nos dados abertos da AR. Fora do MVP; recolha exige validação jurídica.
