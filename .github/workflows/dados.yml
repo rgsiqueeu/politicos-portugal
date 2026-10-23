@@ -23,9 +23,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/gerado
+          git add data/gerado public/fotos
           # meta.json muda sempre (data da recolha); só grava se os dados mudaram
-          if git diff --cached --quiet -- data/gerado ':!data/gerado/meta.json'; then
+          if git diff --cached --quiet -- data/gerado public/fotos ':!data/gerado/meta.json'; then
             echo "Sem alterações."
           else
             git commit -m "Dados: atualização de $(date -u +%Y-%m-%d)"
