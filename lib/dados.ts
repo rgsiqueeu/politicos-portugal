@@ -73,6 +73,7 @@ export type Votacao = {
   diario: string | null;
   iniciativas: { id: string; tipo: string; numero: string; titulo: string }[];
   sentidos: Partial<Record<Sentido, string[]>>;
+  temas: string[];
 };
 
 export type Factos = {
@@ -89,6 +90,7 @@ export type Factos = {
   perguntasRequerimentos: number;
   intervencoes: number;
   ultimaReuniao: string | null;
+  votacoesPorTema: Record<string, number>;
 };
 
 export type Meta = {

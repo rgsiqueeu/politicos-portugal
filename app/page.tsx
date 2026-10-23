@@ -176,7 +176,14 @@ export default function Inicio() {
                       {t.icone}
                     </span>
                     <strong>{t.nome}</strong>
-                    <span className="nota">{num(t.n)} iniciativas</span>
+                    <span className="numeros-tema">
+                      <span>
+                        <b>{num(t.n)}</b> iniciativas
+                      </span>
+                      <span>
+                        <b>{num(f.votacoesPorTema[t.id] ?? 0)}</b> votações
+                      </span>
+                    </span>
                   </Link>
                 </li>
               ))}

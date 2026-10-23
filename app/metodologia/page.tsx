@@ -256,8 +256,7 @@ export default function Metodologia() {
 
       <h2>Créditos</h2>
       <p>
-        Mapa: Natural Earth (domínio público). Inspirado no <a href="https://www.politicometro.org/">Politicômetro</a>, um projeto brasileiro com o mesmo
-        princípio: só dados oficiais, em linguagem simples, sem ranking. Fotografias: Assembleia da República.
+        Dados e fotografias: Assembleia da República. Mapa: Natural Earth (domínio público).
       </p>
       <p className="nota">Página gerada em {dataHora(m.geradoEm)}.</p>
     </div>

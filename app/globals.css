@@ -284,3 +284,13 @@ details > summary { cursor: pointer; color: var(--azul); font-weight: 600; margi
 .barras-tema { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
 .barras-tema a { display: flex; flex-direction: column; gap: .15rem; text-decoration: none; color: var(--tinta); }
 .barras-tema .barra { margin: .2rem 0 0; }
+
+.numeros-tema { display: flex; flex-wrap: wrap; gap: .15rem .9rem; font-size: .85rem; color: var(--tinta-2); margin-top: .15rem; }
+.numeros-tema b { font-family: var(--fonte-display), sans-serif; font-weight: 800; color: var(--azul); font-size: 1rem; }
+.temas-perfil { grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); }
+.temas-perfil .tema { padding: .85rem .95rem; }
+.cab-tema { display: flex; align-items: center; justify-content: space-between; }
+.cab-tema .icone-tema { margin-bottom: 0; width: 36px; height: 36px; font-size: 1.1rem; }
+.total-tema { font-family: var(--fonte-display), sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--azul); }
+.tema.vazio { opacity: .55; box-shadow: none; }
+.tema.vazio .total-tema { color: var(--tinta-3); }

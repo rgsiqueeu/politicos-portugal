@@ -9,10 +9,13 @@ const semAcentos = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toL
 export default function ListaVotacoes({
   votacoes,
   cartoes,
+  temas,
 }: {
-  votacoes: Pick<Votacao, "id" | "resultado" | "unanime" | "iniciativas" | "descricao">[];
+  votacoes: Pick<Votacao, "id" | "resultado" | "unanime" | "iniciativas" | "descricao" | "temas">[];
   cartoes: Record<string, React.ReactNode>;
+  temas: { id: string; nome: string }[];
 }) {
+  const [tema, setTema] = useState("");
   const [q, setQ] = useState("");
   const [resultado, setResultado] = useState("");
   const [mostrar, setMostrar] = useState(30);
@@ -21,13 +24,22 @@ export default function ListaVotacoes({
     return votacoes.filter(
       (v) =>
         (!resultado || (resultado === "unanime" ? v.unanime : v.resultado === resultado)) &&
+        (!tema || v.temas.includes(tema)) &&
         (!t || semAcentos(`${v.iniciativas.map((i) => `${i.titulo} ${i.tipo} ${i.numero}`).join(" ")} ${v.descricao ?? ""}`).includes(t)),
     );
-  }, [votacoes, q, resultado]);
+  }, [votacoes, q, resultado, tema]);
   return (
     <>
       <div className="filtros" role="search">
         <input type="search" placeholder="Procurar por tema ou título (ex.: habitação, saúde)" aria-label="Procurar votações" value={q} onChange={(e) => setQ(e.target.value)} />
+        <select aria-label="Tema" value={tema} onChange={(e) => setTema(e.target.value)}>
+          <option value="">Todos os temas</option>
+          {temas.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.nome}
+            </option>
+          ))}
+        </select>
         <select aria-label="Resultado" value={resultado} onChange={(e) => setResultado(e.target.value)}>
           <option value="">Todos os resultados</option>
           <option value="Aprovado">Aprovadas</option>

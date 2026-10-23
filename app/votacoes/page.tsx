@@ -3,6 +3,7 @@ import CartaoVotacao from "@/components/CartaoVotacao";
 import Fonte from "@/components/Fonte";
 import ListaVotacoes from "@/components/ListaVotacoes";
 import { meta, num, votacoes } from "@/lib/dados";
+import { TEMAS } from "@/lib/temas";
 
 export const metadata: Metadata = { title: "Votações" };
 
@@ -18,7 +19,8 @@ export default function Votacoes() {
         pelo nome.
       </p>
       <ListaVotacoes
-        votacoes={vs.map(({ id, resultado, unanime, iniciativas, descricao }) => ({ id, resultado, unanime, iniciativas, descricao }))}
+        votacoes={vs.map(({ id, resultado, unanime, iniciativas, descricao, temas }) => ({ id, resultado, unanime, iniciativas, descricao, temas }))}
+        temas={TEMAS.map(({ id, nome }) => ({ id, nome }))}
         cartoes={Object.fromEntries(vs.map((v) => [v.id, <CartaoVotacao key={v.id} v={v} />]))}
       />
       <Fonte texto="iniciativas e votações" />

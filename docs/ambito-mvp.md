@@ -21,12 +21,12 @@ Princípio: é melhor cobrir pouco e bem do que muito e com "—" em todo o lado
 - Tribunal Constitucional.
 - Programas eleitorais lado a lado.
 
-## Diferenças conhecidas em relação ao Brasil
+## O que os dados abertos da AR permitem (e não permitem)
 
-- **Votação:** na AR o voto regista-se quase sempre por grupo parlamentar. A métrica brasileira
+- **Votação:** na AR o voto regista-se quase sempre por grupo parlamentar. Uma métrica do tipo
   "votou igual ao partido em X%" seria quase sempre 100% e não informa nada. O que interessa em
   Portugal é assinalar os votos que se afastam da bancada.
-- **Presenças:** ao contrário do Senado brasileiro, a AR publica a presença de cada deputado em cada
-  reunião plenária, com o motivo das faltas justificadas. Confirmado.
-- **Despesas:** não há equivalente à cota parlamentar brasileira nos dados abertos da AR. Confirmado: fica "—".
+- **Presenças:** a AR publica a presença de cada deputado em cada reunião plenária, com o motivo das
+  faltas justificadas. Confirmado.
+- **Despesas:** os dados abertos da AR não trazem despesas nem abonos por deputado. Confirmado: fica "—".
 - **Património e interesses:** não estão nos dados abertos da AR. Fora do MVP; recolha exige validação jurídica.

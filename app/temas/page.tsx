@@ -28,8 +28,16 @@ export default function Temas() {
                   {t.icone}
                 </span>
                 <strong>{t.nome}</strong>
-                <span className="nota">
-                  {num(doTema.length)} iniciativas · {num(pub)} aprovadas e publicadas
+                <span className="numeros-tema">
+                  <span>
+                    <b>{num(doTema.length)}</b> iniciativas
+                  </span>
+                  <span>
+                    <b>{num(m.factos.votacoesPorTema[t.id] ?? 0)}</b> votações
+                  </span>
+                  <span>
+                    <b>{num(pub)}</b> aprovadas
+                  </span>
                 </span>
               </Link>
             </li>

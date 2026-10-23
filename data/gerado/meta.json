@@ -1,7 +1,7 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-10-23T10:57:01.719Z",
+  "geradoEm": "2026-10-23T11:02:23.636Z",
   "recolhidoEm": "2026-10-23T09:25:47.364Z",
   "fontes": {
     "informacaoBase": {
@@ -221,6 +221,24 @@
     "comProfissao": 229,
     "votacoesAprovadas": 1318,
     "votacoesUnanimes": 312,
+    "votacoesPorTema": {
+      "saude": 208,
+      "educacao": 216,
+      "habitacao": 74,
+      "seguranca": 167,
+      "trabalho": 164,
+      "impostos": 204,
+      "ambiente": 133,
+      "energia": 58,
+      "transportes": 95,
+      "agricultura": 36,
+      "social": 237,
+      "igualdade": 159,
+      "cultura": 61,
+      "estado": 205,
+      "defesa": 71,
+      "digital": 34
+    },
     "perguntasRequerimentos": 4195,
     "intervencoes": 5989,
     "ultimaReuniao": "2026-10-16"

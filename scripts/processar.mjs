@@ -269,11 +269,13 @@ async function main() {
             ausencias: v.ausencias ?? [],
             diario: v.publicacao?.[0]?.URLDiario ?? null,
             iniciativas: [],
+            temas: [],
           });
         }
         const vv = votacoes.get(vid);
         if (!vv.iniciativas.some((i) => i.id === resumo.id)) {
           vv.iniciativas.push({ id: resumo.id, tipo: resumo.tipo, numero: resumo.numero, titulo: resumo.titulo });
+          vv.temas = [...new Set([...vv.temas, ...resumo.temas])];
         }
       }
     }
@@ -392,6 +394,10 @@ async function main() {
     comProfissao: [...profissoes.values()].reduce((a, b) => a + b, 0),
     votacoesAprovadas: [...votacoes.values()].filter((v) => v.resultado === "Aprovado").length,
     votacoesUnanimes: [...votacoes.values()].filter((v) => v.unanime).length,
+    // Votações em plenário por tema (tema das iniciativas votadas).
+    votacoesPorTema: Object.fromEntries(
+      TEMAS.map((t) => [t.id, [...votacoes.values()].filter((v) => v.temas.includes(t.id)).length]),
+    ),
     // Documentos únicos: uma pergunta assinada por vários deputados conta uma vez.
     perguntasRequerimentos: new Set(deputados.flatMap((d) => (ativPorId.get(d.id)?.Req ?? []).map((r) => r.ReqId))).size,
     intervencoes: new Set(deputados.flatMap((d) => (ativPorId.get(d.id)?.Intev ?? []).map((i) => i.IntId))).size,

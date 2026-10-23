@@ -79,12 +79,7 @@ export default async function Cracha({ params }: Props) {
     ini: p.iniciativas.filter((i) => i.temas?.includes(t.id)).length,
     int: p.intervencoes.filter((i) => i.temas?.includes(t.id)).length,
     req: p.requerimentos.filter((r) => r.temas?.includes(t.id)).length,
-  }))
-    .map((t) => ({ ...t, total: t.ini + t.int + t.req }))
-    .filter((t) => t.total > 0)
-    .sort((a, b) => b.total - a.total)
-    .slice(0, 6);
-  const maxTema = temas[0]?.total ?? 1;
+  })).map((t) => ({ ...t, total: t.ini + t.int + t.req }));
 
   return (
     <div className="perfil">
@@ -138,9 +133,9 @@ export default async function Cracha({ params }: Props) {
           <span>votações em que votou diferente da bancada</span>
         </div>
         <div className="cartao">
-          <strong>{euros(VENCIMENTO_BASE)}</strong>
+          <strong>{Math.floor(VENCIMENTO_BASE)} €</strong>
           <span>
-            vencimento base por mês, ilíquido ({ANO_REMUNERACOES}), igual para todos.{" "}
+            de vencimento por mês ({euros(VENCIMENTO_BASE)} ilíquidos em {ANO_REMUNERACOES}), igual para todos.{" "}
             <Link href="/metodologia#remuneracoes">Acréscimos por cargo</Link>
           </span>
         </div>
@@ -150,38 +145,38 @@ export default async function Cracha({ params }: Props) {
       </div>
       <div className="dentro">
 
-      <h2>Do que mais tratou</h2>
-      {temas.length === 0 ? (
-        <p>Ainda sem iniciativas, intervenções ou perguntas com tema identificado.</p>
-      ) : (
-        <div className="colunas" style={{ alignItems: "start" }}>
-          <ul className="barras-tema cartao">
-            {temas.map((t) => (
-              <li key={t.id}>
-                <Link href={`/temas/${t.id}`}>
-                  <span>
-                    <span aria-hidden="true">{t.icone} </span>
-                    <strong>{t.nome}</strong>
-                  </span>
-                  <small>
-                    {[t.ini && `${t.ini} iniciativas`, t.int && `${t.int} intervenções`, t.req && `${t.req} perguntas`]
+      <h2>Do que tratou, por tema</h2>
+      <p className="nota">
+        Os 16 temas, com o número de iniciativas, intervenções e perguntas desta pessoa em cada um (como autor ou
+        coautor). Os temas saem de palavras do título ou resumo oficial, com a mesma regra para toda a gente.{" "}
+        <Link href="/metodologia#temas">Como contamos</Link>.
+      </p>
+      <ul className="temas temas-perfil">
+        {temas.map((t) => (
+          <li key={t.id}>
+            <Link href={`/temas/${t.id}`} className={`tema${t.total === 0 ? " vazio" : ""}`}>
+              <span className="cab-tema">
+                <span className="icone-tema" aria-hidden="true">
+                  {t.icone}
+                </span>
+                <b className="total-tema">{num(t.total)}</b>
+              </span>
+              <strong>{t.nome}</strong>
+              <small>
+                {t.total === 0
+                  ? "nada registado"
+                  : [
+                      t.ini && `${t.ini} ${t.ini === 1 ? "iniciativa" : "iniciativas"}`,
+                      t.int && `${t.int} ${t.int === 1 ? "intervenção" : "intervenções"}`,
+                      t.req && `${t.req} ${t.req === 1 ? "pergunta" : "perguntas"}`,
+                    ]
                       .filter(Boolean)
                       .join(" · ")}
-                  </small>
-                  <span className="barra" aria-hidden="true">
-                    <i style={{ width: `${Math.round((t.total / maxTema) * 100)}%` }} />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="nota">
-            Assuntos que mais aparecem nas suas iniciativas, intervenções e perguntas desta legislatura. Os temas saem de
-            palavras do título ou resumo oficial, com a mesma regra para toda a gente. As barras comparam os temas desta
-            pessoa entre si, não com outros deputados. <Link href="/metodologia#temas">Como contamos</Link>.
-          </p>
-        </div>
-      )}
+              </small>
+            </Link>
+          </li>
+        ))}
+      </ul>
       <Fonte texto="iniciativas, intervenções e perguntas" />
 
       <h2>Presença no plenário</h2>
