@@ -8,6 +8,8 @@ const ITENS = [
   ["/deputados", "Deputados"],
   ["/circulos", "O meu círculo"],
   ["/votacoes", "Votações"],
+  ["/temas", "Temas"],
+  ["/retrato", "Retrato"],
   ["/ao-vivo", "Ao vivo"],
   ["/metodologia", "Como funciona"],
 ] as const;

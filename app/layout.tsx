@@ -50,6 +50,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Link href="/deputados">Deputados</Link>
               <Link href="/circulos">O meu círculo</Link>
               <Link href="/votacoes">Votações</Link>
+              <Link href="/temas">Temas</Link>
+              <Link href="/retrato">Retrato do Parlamento</Link>
               <Link href="/ao-vivo">Ao vivo</Link>
               <Link href="/metodologia">Metodologia e fontes</Link>
               <Link href="/metodologia#privacidade">Privacidade</Link>

@@ -132,7 +132,7 @@ main { padding-bottom: 4rem; }
 
 .numeros { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: .75rem; margin: 1.25rem 0 0; }
 .numeros .cartao { padding: .9rem 1rem; }
-.numeros strong { display: block; font-family: var(--fonte-display), sans-serif; font-weight: 800; font-size: 1.7rem; line-height: 1.1; color: var(--azul); margin-bottom: .3rem; }
+.numeros strong { display: block; font-family: var(--fonte-display), sans-serif; font-weight: 800; font-size: clamp(1.2rem, 4.4vw, 1.7rem); white-space: nowrap; line-height: 1.1; color: var(--azul); margin-bottom: .3rem; }
 .numeros span { color: var(--tinta-2); font-size: .875rem; }
 
 /* mosaico de rostos */
@@ -269,3 +269,18 @@ details > summary { cursor: pointer; color: var(--azul); font-weight: 600; margi
 .alternar { display: inline-flex; background: var(--branco); border: 1px solid var(--linha); border-radius: 999px; padding: 3px; margin-bottom: 1rem; }
 .alternar button { font: inherit; font-size: .9rem; font-weight: 600; border: 0; background: none; padding: .4rem .9rem; border-radius: 999px; cursor: pointer; color: var(--tinta-2); }
 .alternar button[aria-pressed="true"] { background: var(--tinta); color: #fff; }
+
+/* temas */
+.temas { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: .75rem; }
+.tema { display: flex; flex-direction: column; gap: .3rem; height: 100%; background: var(--branco); border: 1px solid var(--linha); border-radius: var(--raio); padding: 1rem 1.1rem; text-decoration: none; color: var(--tinta); box-shadow: var(--sombra); transition: transform .15s, box-shadow .15s; }
+.tema:hover { transform: translateY(-2px); box-shadow: var(--sombra-forte); color: var(--tinta); }
+.tema strong { font-size: 1.05rem; }
+.icone-tema { width: 42px; height: 42px; border-radius: 12px; background: var(--azul-claro); color: var(--azul); display: grid; place-items: center; font-size: 1.3rem; margin-bottom: .35rem; }
+.estado-ini { display: inline-block; font-size: .72rem; font-weight: 700; border-radius: 999px; padding: .05rem .45rem; white-space: nowrap; vertical-align: 1px; }
+.estado-ini.publicada { background: var(--azul); color: #fff; }
+.estado-ini.rejeitada { background: var(--tinta); color: #fff; }
+.estado-ini.em_curso { background: var(--amarelo-claro); color: var(--tinta); }
+.estado-ini.retirada { background: var(--linha); color: var(--tinta-2); }
+.barras-tema { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+.barras-tema a { display: flex; flex-direction: column; gap: .15rem; text-decoration: none; color: var(--tinta); }
+.barras-tema .barra { margin: .2rem 0 0; }

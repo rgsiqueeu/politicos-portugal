@@ -6,7 +6,8 @@ import MapaPortugal from "@/components/MapaPortugal";
 import MaisVistos from "@/components/MaisVistos";
 import Pesquisa from "@/components/Pesquisa";
 import VivoAgora from "@/components/VivoAgora";
-import { circuloSlug, data, deputados, meta, miniatura, num, votacoes } from "@/lib/dados";
+import { circuloSlug, data, deputados, meta, miniatura, num, todasIniciativas, votacoes } from "@/lib/dados";
+import { TEMAS } from "@/lib/temas";
 
 export default function Inicio() {
   const m = meta();
@@ -150,6 +151,36 @@ export default function Inicio() {
             Fonte: Assembleia da República · dados abertos · atualizado em {data(m.recolhidoEm)}. Idade e profissão
             segundo o registo biográfico de cada deputado.
           </p>
+        </div>
+      </section>
+
+      <section className="seccao">
+        <div className="dentro">
+          <div className="cab-seccao">
+            <div>
+              <h2>O que se propõe, por tema</h2>
+              <p>Projetos e propostas de lei e de resolução desta legislatura, arrumados por assunto.</p>
+            </div>
+            <Link className="ver-mais" href="/temas">
+              Todos os temas →
+            </Link>
+          </div>
+          <ul className="temas" style={{ marginTop: 0 }}>
+            {TEMAS.map((t) => ({ ...t, n: todasIniciativas().filter((i) => i.temas.includes(t.id)).length }))
+              .sort((a, b) => b.n - a.n)
+              .slice(0, 8)
+              .map((t) => (
+                <li key={t.id}>
+                  <Link href={`/temas/${t.id}`} className="tema">
+                    <span className="icone-tema" aria-hidden="true">
+                      {t.icone}
+                    </span>
+                    <strong>{t.nome}</strong>
+                    <span className="nota">{num(t.n)} iniciativas</span>
+                  </Link>
+                </li>
+              ))}
+          </ul>
         </div>
       </section>
 

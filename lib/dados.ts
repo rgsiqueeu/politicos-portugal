@@ -13,6 +13,8 @@ export type Resumo = {
   gp: string | null;
   emFuncoes: boolean;
   situacaoAtual: string;
+  sexo: "M" | "F" | null;
+  nascimento: string | null;
 };
 
 export type Presenca = { reuniao: string; data: string; codigo: string; motivo: string | null };
@@ -49,9 +51,11 @@ export type Perfil = Resumo & {
     entrada: string | null;
     ultimaFase: string | null;
     ultimaFaseData: string | null;
+    temas: string[];
+    estado: EstadoIniciativa;
   }[];
-  intervencoes: { id: string; data: string; tipo: string | null; sumario: string | null; diario: string | null }[];
-  requerimentos: { id: string; data: string; tipo: "PER" | "REQ"; numero: string; assunto: string }[];
+  intervencoes: { id: string; data: string; tipo: string | null; sumario: string | null; diario: string | null; temas: string[] }[];
+  requerimentos: { id: string; data: string; tipo: "PER" | "REQ"; numero: string; assunto: string; temas: string[] }[];
   presencas: Presenca[];
   desviosBancada: Desvio[];
 };
@@ -103,6 +107,25 @@ export const meta = (): Meta => ler("meta.json");
 export const deputados = (): Resumo[] => ler("deputados.json");
 export const reunioes = (): Reuniao[] => ler("reunioes.json");
 export const votacoes = (): Votacao[] => ler("votacoes.json");
+
+export type EstadoIniciativa = "publicada" | "rejeitada" | "retirada" | "em_curso";
+export type IniciativaTema = {
+  id: string;
+  tipo: string;
+  numero: string;
+  titulo: string;
+  entrada: string | null;
+  estado: EstadoIniciativa;
+  temas: string[];
+  autores: string[];
+};
+export const todasIniciativas = (): IniciativaTema[] => ler("iniciativas.json");
+export const ESTADO: Record<EstadoIniciativa, string> = {
+  publicada: "Aprovada e publicada",
+  rejeitada: "Rejeitada",
+  retirada: "Retirada",
+  em_curso: "Em curso",
+};
 export const perfil = (slug: string): Perfil | null => {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
   try {

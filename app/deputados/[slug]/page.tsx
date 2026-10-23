@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Fonte from "@/components/Fonte";
+import { ANO_REMUNERACOES, VENCIMENTO_BASE, euros } from "@/lib/remuneracoes";
+import { TEMAS } from "@/lib/temas";
 import {
   AR,
   PRESENCA,
@@ -71,6 +73,19 @@ export default async function Cracha({ params }: Props) {
   const requerimentos = p.requerimentos.length - perguntas;
   const saida = !p.emFuncoes ? p.situacoes.at(-1) : null;
 
+  // Do que mais tratou: temas das suas iniciativas, intervenções e perguntas (palavras-chave, ver /metodologia#temas).
+  const temas = TEMAS.map((t) => ({
+    ...t,
+    ini: p.iniciativas.filter((i) => i.temas?.includes(t.id)).length,
+    int: p.intervencoes.filter((i) => i.temas?.includes(t.id)).length,
+    req: p.requerimentos.filter((r) => r.temas?.includes(t.id)).length,
+  }))
+    .map((t) => ({ ...t, total: t.ini + t.int + t.req }))
+    .filter((t) => t.total > 0)
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 6);
+  const maxTema = temas[0]?.total ?? 1;
+
   return (
     <div className="perfil">
       <div className="perfil-topo">
@@ -122,11 +137,52 @@ export default async function Cracha({ params }: Props) {
           <strong>{num(p.desviosBancada.length)}</strong>
           <span>votações em que votou diferente da bancada</span>
         </div>
+        <div className="cartao">
+          <strong>{euros(VENCIMENTO_BASE)}</strong>
+          <span>
+            vencimento base por mês, ilíquido ({ANO_REMUNERACOES}), igual para todos.{" "}
+            <Link href="/metodologia#remuneracoes">Acréscimos por cargo</Link>
+          </span>
+        </div>
       </div>
           <Fonte texto={`${m.legislatura} Legislatura, desde ${data(m.inicioLegislatura)}`} />
         </div>
       </div>
       <div className="dentro">
+
+      <h2>Do que mais tratou</h2>
+      {temas.length === 0 ? (
+        <p>Ainda sem iniciativas, intervenções ou perguntas com tema identificado.</p>
+      ) : (
+        <div className="colunas" style={{ alignItems: "start" }}>
+          <ul className="barras-tema cartao">
+            {temas.map((t) => (
+              <li key={t.id}>
+                <Link href={`/temas/${t.id}`}>
+                  <span>
+                    <span aria-hidden="true">{t.icone} </span>
+                    <strong>{t.nome}</strong>
+                  </span>
+                  <small>
+                    {[t.ini && `${t.ini} iniciativas`, t.int && `${t.int} intervenções`, t.req && `${t.req} perguntas`]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </small>
+                  <span className="barra" aria-hidden="true">
+                    <i style={{ width: `${Math.round((t.total / maxTema) * 100)}%` }} />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="nota">
+            Assuntos que mais aparecem nas suas iniciativas, intervenções e perguntas desta legislatura. Os temas saem de
+            palavras do título ou resumo oficial, com a mesma regra para toda a gente. As barras comparam os temas desta
+            pessoa entre si, não com outros deputados. <Link href="/metodologia#temas">Como contamos</Link>.
+          </p>
+        </div>
+      )}
+      <Fonte texto="iniciativas, intervenções e perguntas" />
 
       <h2>Presença no plenário</h2>
       <p>

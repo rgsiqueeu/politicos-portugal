@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PRESENCA, data, dataHora, meta, num } from "@/lib/dados";
+import { ANO_REMUNERACOES, FONTE_REMUNERACOES, REMUNERACOES, euros } from "@/lib/remuneracoes";
+import { NOTA_TEMAS, TEMAS } from "@/lib/temas";
 
 export const metadata: Metadata = { title: "Metodologia e fontes" };
 
@@ -148,13 +150,77 @@ export default function Metodologia() {
         O mesmo vale para perguntas e requerimentos.
       </p>
 
+      <h2 id="temas">Como contamos os temas</h2>
+      <p>
+        Os temas de cada iniciativa saem do seu título oficial; os de intervenções e perguntas, do resumo publicado pela
+        Assembleia. Não usamos inteligência artificial nem opinião: é a mesma lista para toda a gente. {NOTA_TEMAS} O
+        que não cita nenhuma palavra fica em “outros assuntos”. Uma lista de palavras nunca acerta sempre; se vir um
+        erro, diga-nos.
+      </p>
+      <div className="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th>
+              <th>Palavras procuradas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TEMAS.map((t) => (
+              <tr key={t.id}>
+                <td>{t.nome}</td>
+                <td>
+                  <small>{t.palavras.join(", ")}</small>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="remuneracoes">Quanto ganha um deputado</h2>
+      <p>
+        Valores mensais ilíquidos em {ANO_REMUNERACOES}, segundo a tabela oficial da Assembleia da República. O
+        vencimento é igual para todos os deputados; as despesas de representação dependem do cargo e do regime de
+        exclusividade. Não mostramos quem está em exclusividade nem os abonos de deslocação de cada pessoa, porque a
+        Assembleia não os publica por deputado.
+      </p>
+      <div className="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Cargo</th>
+              <th style={{ textAlign: "right" }}>Vencimento</th>
+              <th style={{ textAlign: "right" }}>Representação</th>
+              <th style={{ textAlign: "right" }}>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {REMUNERACOES.map((r) => (
+              <tr key={r.cargo}>
+                <td>{r.cargo}</td>
+                <td className="n">{euros(r.vencimento)}</td>
+                <td className="n">{euros(r.representacao)}</td>
+                <td className="n">{euros(r.vencimento + r.representacao)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="nota">
+        Fonte: <a href={FONTE_REMUNERACOES}>Assembleia da República, Estatuto remuneratório</a>.
+      </p>
+
       <h2>O que ainda não cobrimos</h2>
       <ul>
         <li>
           Despesas, ajudas de custo, rendimentos, património e registo de interesses: não estão nos dados abertos da
           Assembleia.
         </li>
-        <li>Remuneração: é fixada por lei, mas ainda não a mostramos.</li>
+        <li>
+          Abonos de deslocação, ajudas de custo e despesas de cada deputado: a Assembleia só publica as regras e os
+          totais do orçamento, não os valores por pessoa.
+        </li>
         <li>Legislaturas anteriores à {m.legislatura}.</li>
         <li>Votações em comissão.</li>
         <li>Presidente da República, Governo, eurodeputados, regiões autónomas e autarquias.</li>

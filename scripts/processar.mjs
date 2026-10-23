@@ -45,6 +45,45 @@ export const PRESENCA = {
 
 const SITUACAO_EM_FUNCOES = /^Efetivo/;
 
+// Temas por palavras-chave no texto oficial (lista pública em lib/temas.json).
+const TEMAS = JSON.parse(await readFile(join(RAIZ, "lib", "temas.json"), "utf8")).temas;
+const normalizar = (s) =>
+  ` ${(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ")} `;
+const REGRAS = TEMAS.map((t) => ({
+  id: t.id,
+  testes: t.palavras.map((p) => {
+    const inteira = p.endsWith("$");
+    const w = normalizar(p.replace(/\$$/, "")).trim();
+    return inteira || w.length <= 3 ? ` ${w} ` : ` ${w}`;
+  }),
+}));
+export function temasDe(texto) {
+  const t = normalizar(texto);
+  return REGRAS.filter((r) => r.testes.some((w) => t.includes(w))).map((r) => r.id);
+}
+
+const FASES_PUBLICADA = new Set([
+  "Lei (Publicação DR)",
+  "Resolução da AR (Publicação DR)",
+  "Resolução (Publicação DAR)",
+  "Deliberação (Publicação DAR)",
+]);
+// Autores que não são grupos parlamentares. "Grupos Parlamentares" é só a etiqueta genérica
+// das iniciativas dos partidos (os grupos vêm em IniAutorGruposParlamentares).
+function autorOutro(outros) {
+  const nome = outros?.nome;
+  if (!nome || nome === "Grupos Parlamentares") return [];
+  return [nome === "PAR" ? "Presidente da Assembleia da República" : nome];
+}
+
+function estadoIniciativa(eventos) {
+  if (eventos.some((e) => FASES_PUBLICADA.has(e.Fase))) return "publicada";
+  if (eventos.some((e) => e.Fase === "Retirada da iniciativa")) return "retirada";
+  const votos = eventos.flatMap((e) => e.Votacao ?? []);
+  if (votos.length && votos.at(-1).resultado === "Rejeitado") return "rejeitada";
+  return "em_curso";
+}
+
 function maisRecente(lista, campoInicio) {
   return [...(lista ?? [])].sort((a, b) => (a[campoInicio] < b[campoInicio] ? -1 : 1)).at(-1);
 }
@@ -200,6 +239,14 @@ async function main() {
       tipo: ini.IniDescTipo,
       numero: ini.IniNr,
       titulo: ini.IniTitulo,
+      temas: temasDe(ini.IniTitulo),
+      estado: estadoIniciativa(eventos),
+      autores: [
+        ...new Set([
+          ...(ini.IniAutorGruposParlamentares ?? []).map((g) => g.GP),
+          ...autorOutro(ini.IniAutorOutros),
+        ]),
+      ],
       entrada: dia(eventos.find((e) => e.Fase === "Entrada")?.DataFase ?? eventos[0]?.DataFase),
       ultimaFase: eventos.at(-1)?.Fase ?? null,
       ultimaFaseData: dia(eventos.at(-1)?.DataFase),
@@ -286,11 +333,11 @@ async function main() {
       gruposAmizade: (a.Gpa ?? []).map((g) => ({ nome: g.GplNo, cargo: g.CgaCrg })),
       iniciativas: ordenar(iniPorDep.get(d.id), "entrada"),
       intervencoes: ordenar(
-        (a.Intev ?? []).map((i) => ({ id: i.IntId, data: dia(i.PubDtreu), tipo: i.TinDs, sumario: i.IntSu, diario: i.PubNr })),
+        (a.Intev ?? []).map((i) => ({ id: i.IntId, data: dia(i.PubDtreu), tipo: i.TinDs, sumario: i.IntSu, diario: i.PubNr, temas: temasDe(i.IntSu) })),
         "data",
       ),
       requerimentos: ordenar(
-        (a.Req ?? []).map((r) => ({ id: r.ReqId, data: dia(r.ReqDt), tipo: r.ReqPerTp, numero: r.ReqNr, assunto: r.ReqAs })),
+        (a.Req ?? []).map((r) => ({ id: r.ReqId, data: dia(r.ReqDt), tipo: r.ReqPerTp, numero: r.ReqNr, assunto: r.ReqAs, temas: temasDe(r.ReqAs) })),
         "data",
       ),
       presencas: presencas.get(d.id).sort((x, y) => (x.data < y.data ? -1 : 1)),
@@ -352,8 +399,36 @@ async function main() {
   };
   await writeFile(join(OUT, "votacoes.json"), JSON.stringify(ultimasVotacoes));
 
+  // Temas: todas as iniciativas, por tema (mais recentes primeiro).
+  const todasIni = iniciativas
+    .map((ini) => {
+      const ev = ini.IniEventos ?? [];
+      return {
+        id: id(ini.IniId),
+        tipo: ini.IniDescTipo,
+        numero: ini.IniNr,
+        titulo: ini.IniTitulo,
+        entrada: dia(ev.find((e) => e.Fase === "Entrada")?.DataFase ?? ev[0]?.DataFase),
+        estado: estadoIniciativa(ev),
+        temas: temasDe(ini.IniTitulo),
+        autores: [
+          ...new Set([
+            ...(ini.IniAutorGruposParlamentares ?? []).map((g) => g.GP),
+            ...autorOutro(ini.IniAutorOutros),
+          ]),
+        ],
+      };
+    })
+    .sort((a, b) => ((a.entrada ?? "") < (b.entrada ?? "") ? 1 : -1));
+  await writeFile(join(OUT, "iniciativas.json"), JSON.stringify(todasIni));
+  relatorio.contagens.iniciativasSemTema = todasIni.filter((i) => i.temas.length === 0).length;
+
   const lista = deputados
-    .map(({ situacoes, gps, ...resto }) => resto)
+    .map(({ situacoes, gps, ...resto }) => ({
+      ...resto,
+      sexo: bioPorId.get(resto.id)?.CadSexo ?? null,
+      nascimento: dia(bioPorId.get(resto.id)?.CadDtNascimento),
+    }))
     .sort((a, b) => a.nome.localeCompare(b.nome, "pt"));
   await writeFile(join(OUT, "deputados.json"), JSON.stringify(lista));
   await writeFile(join(OUT, "reunioes.json"), JSON.stringify(reunioes));
