@@ -299,6 +299,59 @@ async function main() {
     await writeFile(join(OUT, "perfis", `${d.slug}.json`), JSON.stringify(perfil));
   }
 
+  // Últimas votações, com o sentido de cada grupo já separado.
+  const ultimasVotacoes = [...votacoes.values()]
+    .sort((a, b) => (a.data === b.data ? Number(b.id) - Number(a.id) : a.data < b.data ? 1 : -1))
+    .slice(0, 300)
+    .map(({ detalhe, ...v }) => {
+      const partes = partirDetalhe(detalhe);
+      const sentidos = {};
+      for (const [s, toks] of Object.entries(partes)) {
+        sentidos[s] = toks.map((t) => {
+          const l = lerToken(t, siglas);
+          return l.tipo === "pessoa" ? `${l.nome} (${l.gp})` : l.tipo === "grupo" ? (l.n ? `${l.n} ${l.gp}` : l.gp) : t;
+        });
+      }
+      return { ...v, sentidos };
+    });
+
+  // Factos da legislatura sobre quem está em funções (sem ordenar pessoas).
+  const emFuncoesBio = deputados.filter((d) => d.emFuncoes).map((d) => bioPorId.get(d.id) ?? {});
+  const hoje = new Date();
+  const idades = emFuncoesBio
+    .map((b) => b.CadDtNascimento)
+    .filter(Boolean)
+    .map((n) => (hoje - new Date(n)) / (365.2425 * 864e5));
+  // Junta forma masculina e feminina só quando ambas existem nos dados (Advogado + Advogada → Advogado(a)).
+  const brutas = emFuncoesBio.map((b) => b.CadProfissao?.trim()).filter(Boolean);
+  const existentes = new Set(brutas);
+  const chaveProfissao = (p) => {
+    if (p.endsWith("a") && existentes.has(`${p.slice(0, -1)}o`)) return `${p.slice(0, -1)}o(a)`;
+    if (p.endsWith("o") && existentes.has(`${p.slice(0, -1)}a`)) return `${p}(a)`;
+    if (p.endsWith("ora") && existentes.has(p.slice(0, -1))) return `${p.slice(0, -1)}(a)`;
+    if (p.endsWith("or") && existentes.has(`${p}a`)) return `${p}(a)`;
+    return p;
+  };
+  const profissoes = new Map();
+  for (const p of brutas) profissoes.set(chaveProfissao(p), (profissoes.get(chaveProfissao(p)) ?? 0) + 1);
+  const factos = {
+    mulheres: emFuncoesBio.filter((b) => b.CadSexo === "F").length,
+    homens: emFuncoesBio.filter((b) => b.CadSexo === "M").length,
+    idadeMedia: idades.length ? Math.round((idades.reduce((a, b) => a + b, 0) / idades.length) * 10) / 10 : null,
+    idadeMin: idades.length ? Math.floor(Math.min(...idades)) : null,
+    idadeMax: idades.length ? Math.floor(Math.max(...idades)) : null,
+    comIdade: idades.length,
+    profissoes: [...profissoes.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([nome, n]) => ({ nome, n })),
+    comProfissao: [...profissoes.values()].reduce((a, b) => a + b, 0),
+    votacoesAprovadas: [...votacoes.values()].filter((v) => v.resultado === "Aprovado").length,
+    votacoesUnanimes: [...votacoes.values()].filter((v) => v.unanime).length,
+    // Documentos únicos: uma pergunta assinada por vários deputados conta uma vez.
+    perguntasRequerimentos: new Set(deputados.flatMap((d) => (ativPorId.get(d.id)?.Req ?? []).map((r) => r.ReqId))).size,
+    intervencoes: new Set(deputados.flatMap((d) => (ativPorId.get(d.id)?.Intev ?? []).map((i) => i.IntId))).size,
+    ultimaReuniao: reunioes.at(-1)?.data ?? null,
+  };
+  await writeFile(join(OUT, "votacoes.json"), JSON.stringify(ultimasVotacoes));
+
   const lista = deputados
     .map(({ situacoes, gps, ...resto }) => resto)
     .sort((a, b) => a.nome.localeCompare(b.nome, "pt"));
@@ -324,6 +377,7 @@ async function main() {
     grupos,
     circulos,
     contagens: relatorio.contagens,
+    factos,
   };
   await writeFile(join(OUT, "meta.json"), JSON.stringify(meta, null, 2));
   await writeFile(join(OUT, "relatorio.json"), JSON.stringify(relatorio, null, 2));

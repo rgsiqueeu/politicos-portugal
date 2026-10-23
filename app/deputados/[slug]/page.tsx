@@ -9,6 +9,7 @@ import {
   cargoDeputado,
   circuloSlug,
   data,
+  foto,
   grupoPresenca,
   idade,
   meta,
@@ -66,33 +67,33 @@ export default async function Cracha({ params }: Props) {
   const saida = !p.emFuncoes ? p.situacoes.at(-1) : null;
 
   return (
-    <>
-      <p className="nota">
-        <Link href="/">Deputados</Link> ·{" "}
-        <Link href={`/circulos/${circuloSlug(p.circulo)}`}>Círculo de {p.circulo}</Link>
-      </p>
-
-      <div className="cabecalho-perfil">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={AR.foto(p.id)} alt={`Fotografia de ${p.nome}`} loading="lazy" />
-        <div>
-          <h1>{p.nome}</h1>
-          <p>
-            {cargo} · {p.gp} ({nomeGrupo.get(p.gp ?? "") ?? p.gp}) · círculo de {p.circulo}
-            <br />
-            <span className="etiqueta">
-              {p.emFuncoes ? "em funções" : `${p.situacaoAtual.toLowerCase()} desde ${data(saida?.inicio ?? null)}`}
-            </span>
+    <div className="perfil">
+      <div className="perfil-topo">
+        <div className="dentro">
+          <p className="migalhas">
+            <Link href="/deputados">Deputados</Link> ·{" "}
+            <Link href={`/circulos/${circuloSlug(p.circulo)}`}>Círculo de {p.circulo}</Link>
           </p>
-          <p className="nota">
-            {p.nomeCompleto}
-            {anos != null ? ` · ${anos} anos` : ""}
-            {p.profissao ? ` · ${p.profissao}` : ""}
-          </p>
-        </div>
-      </div>
-      <p className="nota">Fotografia: Assembleia da República.</p>
-
+          <div className="cabecalho-perfil">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={foto(p.id)} alt={`Fotografia de ${p.nome}`} width={132} height={165} />
+            <div>
+              <h1 className="display">{p.nome}</h1>
+              <p>
+                {cargo} · <strong>{p.gp}</strong> ({nomeGrupo.get(p.gp ?? "") ?? p.gp}) · círculo de {p.circulo}
+              </p>
+              <p>
+                <span className={`etiqueta${p.emFuncoes ? "" : " fora"}`}>
+                  {p.emFuncoes ? "em funções" : `${p.situacaoAtual.toLowerCase()} desde ${data(saida?.inicio ?? null)}`}
+                </span>
+              </p>
+              <p className="nota" style={{ margin: 0 }}>
+                {p.nomeCompleto}
+                {anos != null ? ` · ${anos} anos` : ""}
+                {p.profissao ? ` · ${p.profissao}` : ""} · Fotografia: Assembleia da República
+              </p>
+            </div>
+          </div>
       <div className="numeros">
         <div className="cartao">
           <strong>
@@ -117,7 +118,10 @@ export default async function Cracha({ params }: Props) {
           <span>votações em que votou diferente da bancada</span>
         </div>
       </div>
-      <Fonte texto={`${m.legislatura} Legislatura, desde ${data(m.inicioLegislatura)}`} />
+          <Fonte texto={`${m.legislatura} Legislatura, desde ${data(m.inicioLegislatura)}`} />
+        </div>
+      </div>
+      <div className="dentro">
 
       <h2>Presença no plenário</h2>
       <p>
@@ -416,7 +420,8 @@ export default async function Cracha({ params }: Props) {
         <a href={AR.biografia(p.id)}>Página oficial na Assembleia da República</a> ·{" "}
         <Link href="/metodologia#correcoes">Reportar erro</Link>
       </p>
-    </>
+      </div>
+    </div>
   );
 }
 

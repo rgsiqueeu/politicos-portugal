@@ -1,7 +1,7 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-10-23T10:05:31.965Z",
+  "geradoEm": "2026-10-23T10:24:35.234Z",
   "recolhidoEm": "2026-10-23T09:25:47.364Z",
   "fontes": {
     "informacaoBase": {
@@ -176,5 +176,53 @@
     "votacoesPlenario": 2178,
     "nomesEmVotacoes": 127,
     "desviosLigados": 127
+  },
+  "factos": {
+    "mulheres": 81,
+    "homens": 149,
+    "idadeMedia": 50.4,
+    "idadeMin": 22,
+    "idadeMax": 78,
+    "comIdade": 229,
+    "profissoes": [
+      {
+        "nome": "Advogado(a)",
+        "n": 27
+      },
+      {
+        "nome": "Professor(a)",
+        "n": 12
+      },
+      {
+        "nome": "Jurista",
+        "n": 11
+      },
+      {
+        "nome": "Economista",
+        "n": 10
+      },
+      {
+        "nome": "Empresário(a)",
+        "n": 9
+      },
+      {
+        "nome": "Gestor(a)",
+        "n": 7
+      },
+      {
+        "nome": "Deputado(a)",
+        "n": 5
+      },
+      {
+        "nome": "Professor Universitário",
+        "n": 4
+      }
+    ],
+    "comProfissao": 229,
+    "votacoesAprovadas": 1318,
+    "votacoesUnanimes": 312,
+    "perguntasRequerimentos": 4195,
+    "intervencoes": 5989,
+    "ultimaReuniao": "2026-10-16"
   }
 }

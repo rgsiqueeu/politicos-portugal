@@ -58,6 +58,35 @@ export type Perfil = Resumo & {
 
 export type Reuniao = { id: string; data: string; numero: number; sessao: string; tipo: string };
 
+export type Votacao = {
+  id: string;
+  data: string;
+  resultado: string;
+  unanime: boolean;
+  fase: string;
+  descricao: string | null;
+  ausencias: string[];
+  diario: string | null;
+  iniciativas: { id: string; tipo: string; numero: string; titulo: string }[];
+  sentidos: Partial<Record<Sentido, string[]>>;
+};
+
+export type Factos = {
+  mulheres: number;
+  homens: number;
+  idadeMedia: number | null;
+  idadeMin: number | null;
+  idadeMax: number | null;
+  comIdade: number;
+  profissoes: { nome: string; n: number }[];
+  comProfissao: number;
+  votacoesAprovadas: number;
+  votacoesUnanimes: number;
+  perguntasRequerimentos: number;
+  intervencoes: number;
+  ultimaReuniao: string | null;
+};
+
 export type Meta = {
   legislatura: string;
   inicioLegislatura: string;
@@ -67,11 +96,13 @@ export type Meta = {
   grupos: { sigla: string; nome: string }[];
   circulos: { id: string; nome: string }[];
   contagens: Record<string, number>;
+  factos: Factos;
 };
 
 export const meta = (): Meta => ler("meta.json");
 export const deputados = (): Resumo[] => ler("deputados.json");
 export const reunioes = (): Reuniao[] => ler("reunioes.json");
+export const votacoes = (): Votacao[] => ler("votacoes.json");
 export const perfil = (slug: string): Perfil | null => {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
   try {
@@ -117,8 +148,11 @@ export const AR = {
   atividade: (id: string) => `https://www.parlamento.pt/DeputadoGP/Paginas/ActividadeDeputado.aspx?BID=${id}`,
   iniciativa: (id: string) => `https://www.parlamento.pt/ActividadeParlamentar/Paginas/DetalheIniciativa.aspx?BID=${id}`,
   reuniao: (id: string) => `https://www.parlamento.pt/DeputadoGP/Paginas/DetalheReuniaoPlenaria.aspx?BID=${id}`,
-  foto: (id: string) => `https://app.parlamento.pt/webutils/getimage.aspx?id=${id}&type=deputado`,
 };
+
+// Fotografias oficiais da AR, guardadas em versão leve (scripts/fotos.mjs).
+export const foto = (id: string) => `/fotos/${id}.webp`;
+export const miniatura = (id: string) => `/fotos/p/${id}.webp`;
 
 const fmt = new Intl.DateTimeFormat("pt-PT", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Europe/Lisbon" });
 const fmtHora = new Intl.DateTimeFormat("pt-PT", {

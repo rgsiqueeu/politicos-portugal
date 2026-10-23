@@ -9,7 +9,8 @@
     "lint": "tsc --noEmit",
     "recolha": "node scripts/recolha.mjs",
     "processar": "node scripts/processar.mjs",
-    "dados": "node scripts/recolha.mjs && node scripts/processar.mjs"
+    "fotos": "node scripts/fotos.mjs",
+    "dados": "node scripts/recolha.mjs && node scripts/processar.mjs && node scripts/fotos.mjs"
   },
   "dependencies": {
     "next": "^16.4.2",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
+    "sharp": "^0.35.5",
     "typescript": "^7.0.2"
   }
 }

@@ -71,23 +71,28 @@ export default function ListaDeputados({
       <p className="nota" aria-live="polite">
         {filtrados.length} {filtrados.length === 1 ? "pessoa" : "pessoas"}, de A a Z
       </p>
-      <ul className="lista az">
-        {porLetra.map(([letra, lista]) => [
-          <li key={`l-${letra}`} className="letra" aria-hidden="true">
-            {letra}
-          </li>,
-          ...lista.map((d) => (
-            <li key={d.id}>
-              <Link href={`/deputados/${d.slug}`}>{d.nome}</Link>
-              <br />
-              <small>
-                {d.gp} · {d.circulo}
-                {d.emFuncoes ? "" : ` · ${d.situacaoAtual.toLowerCase()}`}
-              </small>
-            </li>
-          )),
-        ])}
-      </ul>
+      {porLetra.map(([letra, lista]) => (
+        <section key={letra} aria-label={`Letra ${letra}`}>
+          <h2 className="letra">{letra}</h2>
+          <ul className="pessoas">
+            {lista.map((d) => (
+              <li key={d.id}>
+                <Link className="pessoa" href={`/deputados/${d.slug}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/fotos/p/${d.id}.webp`} alt="" loading="lazy" width={48} height={60} />
+                  <span>
+                    <strong>{d.nome}</strong>
+                    <small>
+                      {d.gp} · {d.circulo}
+                      {d.emFuncoes ? "" : ` · ${d.situacaoAtual.toLowerCase()}`}
+                    </small>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </>
   );
 }

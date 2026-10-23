@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PRESENCA, data, dataHora, meta, num } from "@/lib/dados";
 
 export const metadata: Metadata = { title: "Metodologia e fontes" };
@@ -16,8 +17,8 @@ export default function Metodologia() {
   const c = m.contagens;
   const codigos = Object.entries(PRESENCA);
   return (
-    <>
-      <h1>Metodologia e fontes</h1>
+    <div className="dentro pagina" style={{ maxWidth: 860 }}>
+      <h1 className="display">Metodologia e fontes</h1>
       <p>
         Este site mostra quem nos representa na Assembleia da República e o que fez com o mandato, usando só dados
         oficiais e públicos. Cada bloco indica de onde vem o dado e quando foi atualizado.
@@ -163,7 +164,7 @@ export default function Metodologia() {
       <ul>
         <li>O código de presença FAJ aparece uma vez e ainda não confirmámos o seu significado.</li>
         <li>Algumas páginas de iniciativa do site da Assembleia devolvem erro de forma intermitente.</li>
-        <li>As fotografias são carregadas diretamente do site da Assembleia.</li>
+        <li>As fotografias vêm do site da Assembleia e são guardadas em versão reduzida.</li>
       </ul>
 
       <h2 id="correcoes">Correções e direito de resposta</h2>
@@ -172,10 +173,19 @@ export default function Metodologia() {
         conferidas contra a fonte oficial.
       </p>
 
-      <h2>Privacidade</h2>
+      <h2 id="privacidade">Privacidade</h2>
+      <p>Não guardamos nem mostramos moradas, números de identificação civil ou fiscal.</p>
       <p>
-        Não guardamos nem mostramos moradas, números de identificação civil ou fiscal. Este site não usa cookies nem
-        estatísticas de visitas.
+        Contamos as visitas para mostrar a página <Link href="/ao-vivo">Ao vivo</Link> e saber o que melhorar. É anónimo:
+        sem cookies, sem conta e sem endereço IP gravado. Para cada visita guardamos só a página aberta, a cidade e o
+        país aproximados (dados pela ligação à internet) e dois códigos aleatórios: um por separador do browser, que
+        desaparece quando o fechas, e outro para contar pessoas diferentes em cada dia, calculado a partir do endereço
+        de internet, do browser e de um segredo que muda todos os dias. Não é possível seguir ninguém de um dia para o
+        outro. Os registos são apagados ao fim de 90 dias.
+      </p>
+      <p>
+        Só mostramos cidades e países com pelo menos 5 pessoas. Se o teu browser pede “não rastrear”, não contamos nada.
+        Estes números nunca servem para ordenar políticos.
       </p>
 
       <h2>Créditos</h2>
@@ -184,6 +194,6 @@ export default function Metodologia() {
         princípio: só dados oficiais, em linguagem simples, sem ranking. Fotografias: Assembleia da República.
       </p>
       <p className="nota">Página gerada em {dataHora(m.geradoEm)}.</p>
-    </>
+    </div>
   );
 }
