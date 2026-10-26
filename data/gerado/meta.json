@@ -1,38 +1,38 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-10-24T09:37:31.694Z",
-  "recolhidoEm": "2026-10-24T09:36:29.225Z",
+  "geradoEm": "2026-10-26T11:13:44.040Z",
+  "recolhidoEm": "2026-10-26T11:12:50.164Z",
   "fontes": {
     "informacaoBase": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
       "ficheiro": "InformacaoBaseXVII_json.txt",
       "bytes": 565693,
-      "recolhidoEm": "2026-10-24T09:36:33.380Z"
+      "recolhidoEm": "2026-10-26T11:12:52.497Z"
     },
     "registoBiografico": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
       "ficheiro": "RegistoBiograficoXVII_json.txt",
       "bytes": 746179,
-      "recolhidoEm": "2026-10-24T09:36:36.646Z"
+      "recolhidoEm": "2026-10-26T11:12:56.384Z"
     },
     "atividadeDeputado": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
       "ficheiro": "AtividadeDeputadoXVII_json.txt",
-      "bytes": 42746517,
-      "recolhidoEm": "2026-10-24T09:36:51.049Z"
+      "bytes": 42744587,
+      "recolhidoEm": "2026-10-26T11:13:10.192Z"
     },
     "orgaos": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
       "ficheiro": "OrgaoComposicaoXVII_json.txt",
-      "bytes": 5247598,
-      "recolhidoEm": "2026-10-24T09:36:56.280Z"
+      "bytes": 5247842,
+      "recolhidoEm": "2026-10-26T11:13:15.899Z"
     },
     "iniciativas": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
       "ficheiro": "IniciativasXVII_json.txt",
       "bytes": 101459761,
-      "recolhidoEm": "2026-10-24T09:37:27.047Z"
+      "recolhidoEm": "2026-10-26T11:13:39.471Z"
     }
   },
   "grupos": [
@@ -240,7 +240,7 @@
       "digital": 34
     },
     "perguntasRequerimentos": 4197,
-    "intervencoes": 6674,
+    "intervencoes": 6632,
     "ultimaReuniao": "2026-10-21"
   }
 }
