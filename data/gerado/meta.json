@@ -1,38 +1,38 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-10-28T11:25:53.360Z",
-  "recolhidoEm": "2026-10-28T11:24:32.860Z",
+  "geradoEm": "2026-10-29T11:36:37.505Z",
+  "recolhidoEm": "2026-10-29T11:34:58.069Z",
   "fontes": {
     "informacaoBase": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
       "ficheiro": "InformacaoBaseXVII_json.txt",
-      "bytes": 565872,
-      "recolhidoEm": "2026-10-28T11:25:00.309Z"
+      "bytes": 565866,
+      "recolhidoEm": "2026-10-29T11:35:22.153Z"
     },
     "registoBiografico": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
       "ficheiro": "RegistoBiograficoXVII_json.txt",
-      "bytes": 746823,
-      "recolhidoEm": "2026-10-28T11:25:05.185Z"
+      "bytes": 747067,
+      "recolhidoEm": "2026-10-29T11:35:27.775Z"
     },
     "atividadeDeputado": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
       "ficheiro": "AtividadeDeputadoXVII_json.txt",
-      "bytes": 42357666,
-      "recolhidoEm": "2026-10-28T11:25:18.251Z"
+      "bytes": 43387184,
+      "recolhidoEm": "2026-10-29T11:35:43.113Z"
     },
     "orgaos": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
       "ficheiro": "OrgaoComposicaoXVII_json.txt",
-      "bytes": 5249274,
-      "recolhidoEm": "2026-10-28T11:25:24.643Z"
+      "bytes": 5284053,
+      "recolhidoEm": "2026-10-29T11:35:52.433Z"
     },
     "iniciativas": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
       "ficheiro": "IniciativasXVII_json.txt",
-      "bytes": 101278301,
-      "recolhidoEm": "2026-10-28T11:25:48.323Z"
+      "bytes": 102495033,
+      "recolhidoEm": "2026-10-29T11:36:32.703Z"
     }
   },
   "grupos": [
@@ -170,9 +170,9 @@
   "contagens": {
     "deputadosNaLegislatura": 271,
     "emFuncoes": 230,
-    "reunioesPlenario": 126,
-    "registosPresenca": 28980,
-    "iniciativas": 2354,
+    "reunioesPlenario": 127,
+    "registosPresenca": 29210,
+    "iniciativas": 2358,
     "votacoesPlenario": 2285,
     "nomesEmVotacoes": 128,
     "desviosLigados": 128
@@ -183,11 +183,11 @@
     "idadeMedia": 50.5,
     "idadeMin": 22,
     "idadeMax": 78,
-    "comIdade": 228,
+    "comIdade": 229,
     "profissoes": [
       {
         "nome": "Advogado(a)",
-        "n": 27
+        "n": 28
       },
       {
         "nome": "Professor(a)",
@@ -218,7 +218,7 @@
         "n": 4
       }
     ],
-    "comProfissao": 228,
+    "comProfissao": 229,
     "votacoesAprovadas": 1361,
     "votacoesUnanimes": 324,
     "votacoesPorTema": {
@@ -239,8 +239,8 @@
       "defesa": 71,
       "digital": 34
     },
-    "perguntasRequerimentos": 4202,
-    "intervencoes": 7079,
-    "ultimaReuniao": "2026-10-21"
+    "perguntasRequerimentos": 4214,
+    "intervencoes": 7122,
+    "ultimaReuniao": "2026-10-27"
   }
 }
