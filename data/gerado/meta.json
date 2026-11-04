@@ -1,38 +1,38 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-11-03T12:52:32.610Z",
-  "recolhidoEm": "2026-11-03T12:51:31.322Z",
+  "geradoEm": "2026-11-04T13:05:05.662Z",
+  "recolhidoEm": "2026-11-04T13:03:53.403Z",
   "fontes": {
     "informacaoBase": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
       "ficheiro": "InformacaoBaseXVII_json.txt",
       "bytes": 565872,
-      "recolhidoEm": "2026-11-03T12:51:36.969Z"
+      "recolhidoEm": "2026-11-04T13:03:59.314Z"
     },
     "registoBiografico": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
       "ficheiro": "RegistoBiograficoXVII_json.txt",
       "bytes": 747116,
-      "recolhidoEm": "2026-11-03T12:51:41.859Z"
+      "recolhidoEm": "2026-11-04T13:04:05.926Z"
     },
     "atividadeDeputado": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
       "ficheiro": "AtividadeDeputadoXVII_json.txt",
-      "bytes": 41678722,
-      "recolhidoEm": "2026-11-03T12:51:55.746Z"
+      "bytes": 42484025,
+      "recolhidoEm": "2026-11-04T13:04:22.586Z"
     },
     "orgaos": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
       "ficheiro": "OrgaoComposicaoXVII_json.txt",
-      "bytes": 5323444,
-      "recolhidoEm": "2026-11-03T12:52:02.650Z"
+      "bytes": 5323899,
+      "recolhidoEm": "2026-11-04T13:04:32.627Z"
     },
     "iniciativas": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
       "ficheiro": "IniciativasXVII_json.txt",
-      "bytes": 103089026,
-      "recolhidoEm": "2026-11-03T12:52:28.692Z"
+      "bytes": 103144587,
+      "recolhidoEm": "2026-11-04T13:05:02.580Z"
     }
   },
   "grupos": [
@@ -173,9 +173,9 @@
     "reunioesPlenario": 128,
     "registosPresenca": 29440,
     "iniciativas": 2359,
-    "votacoesPlenario": 2321,
-    "nomesEmVotacoes": 130,
-    "desviosLigados": 130
+    "votacoesPlenario": 2339,
+    "nomesEmVotacoes": 133,
+    "desviosLigados": 133
   },
   "factos": {
     "mulheres": 82,
@@ -219,7 +219,7 @@
       }
     ],
     "comProfissao": 229,
-    "votacoesAprovadas": 1393,
+    "votacoesAprovadas": 1406,
     "votacoesUnanimes": 337,
     "votacoesPorTema": {
       "saude": 228,
@@ -240,7 +240,7 @@
       "digital": 35
     },
     "perguntasRequerimentos": 4229,
-    "intervencoes": 6674,
+    "intervencoes": 7208,
     "ultimaReuniao": "2026-10-28"
   }
 }
