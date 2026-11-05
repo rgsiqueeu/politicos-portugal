@@ -1,38 +1,38 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-11-04T13:05:05.662Z",
-  "recolhidoEm": "2026-11-04T13:03:53.403Z",
+  "geradoEm": "2026-11-05T13:18:26.776Z",
+  "recolhidoEm": "2026-11-05T13:17:23.833Z",
   "fontes": {
     "informacaoBase": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
       "ficheiro": "InformacaoBaseXVII_json.txt",
       "bytes": 565872,
-      "recolhidoEm": "2026-11-04T13:03:59.314Z"
+      "recolhidoEm": "2026-11-05T13:17:29.601Z"
     },
     "registoBiografico": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
       "ficheiro": "RegistoBiograficoXVII_json.txt",
       "bytes": 747116,
-      "recolhidoEm": "2026-11-04T13:04:05.926Z"
+      "recolhidoEm": "2026-11-05T13:17:34.537Z"
     },
     "atividadeDeputado": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
       "ficheiro": "AtividadeDeputadoXVII_json.txt",
-      "bytes": 42484025,
-      "recolhidoEm": "2026-11-04T13:04:22.586Z"
+      "bytes": 41972528,
+      "recolhidoEm": "2026-11-05T13:17:47.955Z"
     },
     "orgaos": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
       "ficheiro": "OrgaoComposicaoXVII_json.txt",
-      "bytes": 5323899,
-      "recolhidoEm": "2026-11-04T13:04:32.627Z"
+      "bytes": 5324158,
+      "recolhidoEm": "2026-11-05T13:17:55.656Z"
     },
     "iniciativas": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
       "ficheiro": "IniciativasXVII_json.txt",
-      "bytes": 103144587,
-      "recolhidoEm": "2026-11-04T13:05:02.580Z"
+      "bytes": 103154691,
+      "recolhidoEm": "2026-11-05T13:18:22.797Z"
     }
   },
   "grupos": [
@@ -239,8 +239,8 @@
       "defesa": 73,
       "digital": 35
     },
-    "perguntasRequerimentos": 4229,
-    "intervencoes": 7208,
+    "perguntasRequerimentos": 4245,
+    "intervencoes": 6165,
     "ultimaReuniao": "2026-10-28"
   }
 }
