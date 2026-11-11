@@ -1,38 +1,38 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-11-10T13:35:47.942Z",
-  "recolhidoEm": "2026-11-10T13:33:44.952Z",
+  "geradoEm": "2026-11-11T12:48:06.907Z",
+  "recolhidoEm": "2026-11-11T12:46:50.047Z",
   "fontes": {
     "informacaoBase": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
       "ficheiro": "InformacaoBaseXVII_json.txt",
       "bytes": 565872,
-      "recolhidoEm": "2026-11-10T13:33:51.172Z"
+      "recolhidoEm": "2026-11-11T12:46:58.045Z"
     },
     "registoBiografico": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
       "ficheiro": "RegistoBiograficoXVII_json.txt",
       "bytes": 744991,
-      "recolhidoEm": "2026-11-10T13:33:54.909Z"
+      "recolhidoEm": "2026-11-11T12:47:05.894Z"
     },
     "atividadeDeputado": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
       "ficheiro": "AtividadeDeputadoXVII_json.txt",
-      "bytes": 43718161,
-      "recolhidoEm": "2026-11-10T13:34:09.440Z"
+      "bytes": 43835144,
+      "recolhidoEm": "2026-11-11T12:47:24.112Z"
     },
     "orgaos": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
       "ficheiro": "OrgaoComposicaoXVII_json.txt",
       "bytes": 5329108,
-      "recolhidoEm": "2026-11-10T13:35:21.498Z"
+      "recolhidoEm": "2026-11-11T12:47:32.822Z"
     },
     "iniciativas": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
       "ficheiro": "IniciativasXVII_json.txt",
-      "bytes": 103056189,
-      "recolhidoEm": "2026-11-10T13:35:43.122Z"
+      "bytes": 104325663,
+      "recolhidoEm": "2026-11-11T12:48:02.070Z"
     }
   },
   "grupos": [
@@ -172,8 +172,8 @@
     "emFuncoes": 230,
     "reunioesPlenario": 128,
     "registosPresenca": 29440,
-    "iniciativas": 2359,
-    "votacoesPlenario": 2325,
+    "iniciativas": 2361,
+    "votacoesPlenario": 2339,
     "nomesEmVotacoes": 142,
     "desviosLigados": 142
   },
@@ -219,8 +219,8 @@
       }
     ],
     "comProfissao": 229,
-    "votacoesAprovadas": 1393,
-    "votacoesUnanimes": 336,
+    "votacoesAprovadas": 1406,
+    "votacoesUnanimes": 337,
     "votacoesPorTema": {
       "saude": 228,
       "educacao": 223,
@@ -233,14 +233,14 @@
       "transportes": 97,
       "agricultura": 36,
       "social": 254,
-      "igualdade": 159,
+      "igualdade": 172,
       "cultura": 69,
       "estado": 213,
       "defesa": 73,
       "digital": 35
     },
-    "perguntasRequerimentos": 4280,
-    "intervencoes": 7313,
+    "perguntasRequerimentos": 4285,
+    "intervencoes": 7211,
     "ultimaReuniao": "2026-10-28"
   }
 }
