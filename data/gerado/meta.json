@@ -1,38 +1,38 @@
 {
   "legislatura": "XVII",
   "inicioLegislatura": "2025-06-03",
-  "geradoEm": "2026-11-17T14:35:15.951Z",
-  "recolhidoEm": "2026-11-17T14:34:30.697Z",
+  "geradoEm": "2026-11-18T14:13:15.346Z",
+  "recolhidoEm": "2026-11-18T14:10:49.163Z",
   "fontes": {
     "informacaoBase": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAInformacaoBase.aspx",
       "ficheiro": "InformacaoBaseXVII_json.txt",
       "bytes": 565872,
-      "recolhidoEm": "2026-11-17T14:34:35.981Z"
+      "recolhidoEm": "2026-11-18T14:11:11.689Z"
     },
     "registoBiografico": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DARegistoBiografico.aspx",
       "ficheiro": "RegistoBiograficoXVII_json.txt",
       "bytes": 745184,
-      "recolhidoEm": "2026-11-17T14:34:39.635Z"
+      "recolhidoEm": "2026-11-18T14:11:32.470Z"
     },
     "atividadeDeputado": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAatividadeDeputado.aspx",
       "ficheiro": "AtividadeDeputadoXVII_json.txt",
-      "bytes": 43480550,
-      "recolhidoEm": "2026-11-17T14:34:59.266Z"
+      "bytes": 44617662,
+      "recolhidoEm": "2026-11-18T14:11:55.081Z"
     },
     "orgaos": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAComposicaoOrgaos.aspx",
       "ficheiro": "OrgaoComposicaoXVII_json.txt",
-      "bytes": 5331555,
-      "recolhidoEm": "2026-11-17T14:35:06.005Z"
+      "bytes": 5331576,
+      "recolhidoEm": "2026-11-18T14:12:18.175Z"
     },
     "iniciativas": {
       "pagina": "https://www.parlamento.pt/Cidadania/Paginas/DAIniciativas.aspx",
       "ficheiro": "IniciativasXVII_json.txt",
       "bytes": 3891899,
-      "recolhidoEm": "2026-11-17T14:35:12.369Z"
+      "recolhidoEm": "2026-11-18T14:13:12.412Z"
     }
   },
   "grupos": [
@@ -239,8 +239,8 @@
       "defesa": 0,
       "digital": 1
     },
-    "perguntasRequerimentos": 4284,
-    "intervencoes": 6911,
+    "perguntasRequerimentos": 4337,
+    "intervencoes": 7084,
     "ultimaReuniao": "2026-10-28"
   }
 }
