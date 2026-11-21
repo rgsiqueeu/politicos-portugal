@@ -1,20 +1,20 @@
 {
   "avisos": [
     "Código de presença sem significado confirmado: FAJ (Edite Estrela, 2026-01-23)",
+    "Votação 193031: termo não reconhecido \"JPPAusência: PAN\"",
+    "Votação 193032: termo não reconhecido \"JPPAusência: PAN\"",
     "Votação 193023: termo não reconhecido \"JPPAusência: PAN\"",
     "Votação 193026: termo não reconhecido \"JPPAusência: PAN\"",
     "Votação 193027: termo não reconhecido \"JPPAusência: PAN\"",
-    "Votação 193028: termo não reconhecido \"JPPAusência: PAN\"",
-    "Votação 193031: termo não reconhecido \"JPPAusência: PAN\"",
-    "Votação 193032: termo não reconhecido \"JPPAusência: PAN\""
+    "Votação 193028: termo não reconhecido \"JPPAusência: PAN\""
   ],
   "contagens": {
     "deputadosNaLegislatura": 271,
     "emFuncoes": 230,
-    "reunioesPlenario": 129,
-    "registosPresenca": 29670,
-    "iniciativas": 2366,
-    "votacoesPlenario": 2339,
+    "reunioesPlenario": 131,
+    "registosPresenca": 30130,
+    "iniciativas": 2365,
+    "votacoesPlenario": 2324,
     "nomesEmVotacoes": 142,
     "desviosLigados": 142
   }
